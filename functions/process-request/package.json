@@ -1,5 +1,5 @@
 {
-  "name": "api-process",
+  "name": "process-request",
   "version": "1.0.0",
   "description": "Autehnticated HTTP Cloud Function",
   "main": "index.js",

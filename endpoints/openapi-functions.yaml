@@ -1,0 +1,57 @@
+swagger: '2.0'
+info:
+  title: @@ENDPOINT_SERVICE_NAME@@
+  description: API on Cloud Endpoints with a Google Cloud Functions backend
+  version: 1.0.0
+host: @@ENDPOINT_HOSTNAME@@
+basePath: /v1
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /process:
+    post:
+      summary: Process Request Data
+      operationId: process-post
+      x-google-backend:
+        address: https://@@PROJECT_REGION@@-@@PROJECT_ID@@.cloudfunctions.net/process-request
+        protocol: h2
+      parameters:
+        - in: body
+          name: process
+          schema:
+            $ref: '#/definitions/Process'
+      responses:
+        '201':
+          description: A successful response
+          schema:
+            $ref: '#/definitions/Response'
+      security:
+        - api_key: []
+securityDefinitions:
+    api_key:
+      type: "apiKey"
+      name: "API_KEY_NAME"
+      in: "query"
+definitions:
+  Process:
+    type: object
+    required:
+      - developer
+    properties:
+      developer:
+        type: string
+  Response:
+    type: object
+    properties:
+      id:
+        type: string
+      time:
+        type: string
+      query:
+        type: object
+      body:
+        $ref: '#/definitions/Process'

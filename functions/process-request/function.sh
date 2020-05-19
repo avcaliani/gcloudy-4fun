@@ -58,7 +58,7 @@ do
         curl -i -X POST \
             -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
             -H "Content-Type: application/json" \
-            -d '{ "owner": "anthony" }' \
+            -d '{ "developer": "anthony" }' \
             "https://$FUNC_REGION-$PROJECT_ID.cloudfunctions.net/$FUNC_NAME"
         
         echo -e "\n"
@@ -82,7 +82,7 @@ do
         --remove)
         echo -e ""
         echo -e "$ARROW Deleting function..."
-        gcloud functions delete "$FUNC_NAME"
+        gcloud functions delete "$FUNC_NAME" --project "$PROJECT_ID"
         shift
         ;;
 

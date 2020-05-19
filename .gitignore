@@ -1,5 +1,5 @@
 *.DS_Store
 *-lock.json
 node_modules
-endpoints/.env
+endpoints/gcloud_build_image
 endpoints/target/*
