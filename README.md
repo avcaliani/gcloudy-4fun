@@ -1,4 +1,4 @@
-# 🥳 GCloudy 4Fun
+# 🥳 GCloudy API
 By Anthony Vilarim Caliani
 
 [![#](https://img.shields.io/badge/licence-MIT-lightseagreen.svg)](#) [![#](https://img.shields.io/badge/runtime-nodejs8-green.svg)](#)
@@ -153,6 +153,11 @@ gcloud run deploy $ENDPOINT_SERVICE_NAME \
     --allow-unauthenticated \
     --platform managed \
     --project "$PROJECT_ID"
+```
+
+Before you finish, update some security configuration.
+```bash 
+./functions/process-request/function.sh --auth-iam
 ```
 
 ### Try-Out
